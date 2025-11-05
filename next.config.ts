@@ -2,13 +2,14 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  // הפתרון לאזהרת ה-Lockfile כאשר משתמשים ב-Turbopack
-  experimental: {
-    turbopack: {
-      root: __dirname,
-    },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+      },
+    ],
   },
-  // הוספת הגדרות TypeScript נוספות כאן אם נדרש
 };
 
 export default nextConfig;

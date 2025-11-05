@@ -17,7 +17,7 @@ interface Post {
 const POSTS_QUERY = `*[_type == "post"] {
   _id,
   title,
-  "slug": slug.current, // מקבל את המזהה הייחודי
+  slug,
   excerpt,
   publishedAt
 } | order(publishedAt desc)`; // מיין לפי תאריך יורד
@@ -53,8 +53,8 @@ export default async function BlogPage() {
             className="p-6 bg-white border border-gray-100 rounded-xl shadow-lg hover:shadow-2xl transition duration-300"
           >
             {/* *** התיקון: הצפנת ה-slug ל-URL בטוח *** */}
-            <Link 
-                href={`/blog/${encodeURIComponent(post.slug)}`} 
+            <Link
+                href={`/blog/${encodeURIComponent(post.slug.current)}`}
                 className="block"
             >
               <h2 className="text-xl font-bold text-indigo-800 hover:text-indigo-600 transition duration-150 mb-2">
